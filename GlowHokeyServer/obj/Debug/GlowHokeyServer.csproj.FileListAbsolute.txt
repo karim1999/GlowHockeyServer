@@ -1,0 +1,6 @@
+D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\bin\Debug\GlowHokeyServer.exe
+D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\bin\Debug\GlowHokeyServer.pdb
+D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csprojAssemblyReference.cache
+D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CoreCompileInputs.cache
+D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.exe
+D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.pdb
