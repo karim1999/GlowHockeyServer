@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using OpponentLibrary;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GlowHokeyServer
 {
@@ -35,9 +38,11 @@ namespace GlowHokeyServer
 
         public void handle()
         {
-            StreamReader sr = new StreamReader(soc.GetStream());
-            StreamWriter sw = new StreamWriter(soc.GetStream());
-
+            NetworkStream ns = soc.GetStream();
+            StreamReader sr = new StreamReader(ns);
+            StreamWriter sw = new StreamWriter(ns);
+            BinaryFormatter bf = new BinaryFormatter();
+            Opponent.PlayerType type= Opponent.PlayerType.Top;
             while (isConnected)
             {
                 foreach (Pair pair in pairs)
@@ -47,18 +52,20 @@ namespace GlowHokeyServer
                         opponent = pair.client2;
                         pair.isClient1In = true;
                         isConnected = false;
+                        type = Opponent.PlayerType.Top;
                     }
                     else if (pair.client2 == soc)
                     {
                         opponent = pair.client1;
                         pair.isClient2In = true;
                         isConnected = false;
+                        type = Opponent.PlayerType.Bottom;
                     }
 
                     if (!isConnected)
                     {
-                        sw.WriteLine(opponent.Client.RemoteEndPoint.ToString());
-                        sw.Flush();
+                        bf.Serialize(ns, new Opponent((IPEndPoint)opponent.Client.RemoteEndPoint, type, (IPEndPoint)soc.Client.RemoteEndPoint));
+                        ns.Flush();
                         Console.WriteLine("======================");
                         break;
                     }

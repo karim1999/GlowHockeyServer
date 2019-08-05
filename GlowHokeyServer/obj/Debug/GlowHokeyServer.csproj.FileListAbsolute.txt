@@ -4,3 +4,12 @@ D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.cs
 D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CoreCompileInputs.cache
 D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.exe
 D:\Projects\Desktop\GlowHokeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.pdb
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\GlowHokeyServer.exe
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\GlowHokeyServer.pdb
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csprojAssemblyReference.cache
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CoreCompileInputs.cache
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.exe
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.pdb
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\OpponentLibrary.dll
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\OpponentLibrary.pdb
+D:\Projects\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CopyComplete
