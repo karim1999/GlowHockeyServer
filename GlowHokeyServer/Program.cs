@@ -84,6 +84,10 @@ namespace GlowHokeyServer
     {
         static void Main(string[] args)
         {
+            runServer(6691);
+        }
+        static void runServer(int port)
+        {
             //Create Tcp Listener
             //waiting for clients
             TcpListener server = TcpListener.Create(6691);
