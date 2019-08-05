@@ -42,7 +42,7 @@ namespace GlowHokeyServer
             StreamReader sr = new StreamReader(ns);
             StreamWriter sw = new StreamWriter(ns);
             BinaryFormatter bf = new BinaryFormatter();
-            Opponent.PlayerType type= Opponent.PlayerType.Top;
+            String type= "T";
             while (isConnected)
             {
                 foreach (Pair pair in pairs)
@@ -52,20 +52,23 @@ namespace GlowHokeyServer
                         opponent = pair.client2;
                         pair.isClient1In = true;
                         isConnected = false;
-                        type = Opponent.PlayerType.Top;
+                        type = "T";
                     }
                     else if (pair.client2 == soc)
                     {
                         opponent = pair.client1;
                         pair.isClient2In = true;
                         isConnected = false;
-                        type = Opponent.PlayerType.Bottom;
+                        type = "B";
                     }
 
                     if (!isConnected)
                     {
-                        bf.Serialize(ns, new Opponent((IPEndPoint)opponent.Client.RemoteEndPoint, type, (IPEndPoint)soc.Client.RemoteEndPoint));
-                        ns.Flush();
+                        IPEndPoint ip = (IPEndPoint)opponent.Client.RemoteEndPoint;
+                        IPEndPoint currentIp = (IPEndPoint)soc.Client.RemoteEndPoint;
+//                        bf.Serialize(ns, new Opponent((IPEndPoint)opponent.Client.RemoteEndPoint, type, (IPEndPoint)soc.Client.RemoteEndPoint));
+                        sw.WriteLine(ip.Address + "," + ip.Port + "," + type + "," + currentIp.Address + "," + currentIp.Port);
+                        sw.Flush();
                         Console.WriteLine("======================");
                         break;
                     }
