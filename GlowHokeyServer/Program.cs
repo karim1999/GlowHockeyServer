@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Threading;
 using OpponentLibrary;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace GlowHokeyServer
 {
@@ -27,7 +28,7 @@ namespace GlowHokeyServer
         public static ConcurrentQueue<Pair> pairs = new ConcurrentQueue<Pair>();
 
         TcpClient soc;
-        bool isConnected= true;
+        bool isConnected = true;
         TcpClient opponent;
         public ClientHandler(TcpClient soc)
         {
@@ -38,64 +39,76 @@ namespace GlowHokeyServer
 
         public void handle()
         {
-            NetworkStream ns = soc.GetStream();
-            StreamReader sr = new StreamReader(ns);
-            StreamWriter sw = new StreamWriter(ns);
-            BinaryFormatter bf = new BinaryFormatter();
-            String type= "T";
-            while (isConnected)
+            try
             {
-                foreach (Pair pair in pairs)
+                NetworkStream ns = soc.GetStream();
+                StreamReader sr = new StreamReader(ns);
+                StreamWriter sw = new StreamWriter(ns);
+                BinaryFormatter bf = new BinaryFormatter();
+                String type = "T";
+                while (isConnected)
                 {
-                    if (pair.client1 == soc)
+                    if (!soc.Connected)
                     {
-                        opponent = pair.client2;
-                        pair.isClient1In = true;
-                        isConnected = false;
-                        type = "T";
+                        clients.TryDequeue(out soc);
+                        Thread.Sleep(1);
                     }
-                    else if (pair.client2 == soc)
+                    foreach (Pair pair in pairs)
                     {
-                        opponent = pair.client1;
-                        pair.isClient2In = true;
-                        isConnected = false;
-                        type = "B";
-                    }
+                        if (pair.client1 == soc)
+                        {
+                            opponent = pair.client2;
+                            pair.isClient1In = true;
+                            isConnected = false;
+                            type = "T";
+                        }
+                        else if (pair.client2 == soc)
+                        {
+                            opponent = pair.client1;
+                            pair.isClient2In = true;
+                            isConnected = false;
+                            type = "B";
+                        }
 
-                    if (!isConnected)
-                    {
-                        IPEndPoint ip = (IPEndPoint)opponent.Client.RemoteEndPoint;
-                        IPEndPoint currentIp = (IPEndPoint)soc.Client.RemoteEndPoint;
-//                        bf.Serialize(ns, new Opponent((IPEndPoint)opponent.Client.RemoteEndPoint, type, (IPEndPoint)soc.Client.RemoteEndPoint));
-                        sw.WriteLine(ip.Address + "," + ip.Port + "," + type + "," + currentIp.Address + "," + currentIp.Port);
-                        sw.Flush();
-                        Console.WriteLine("======================");
-                        break;
+                        if (!isConnected)
+                        {
+                            IPEndPoint ip = (IPEndPoint)opponent.Client.RemoteEndPoint;
+                            IPEndPoint currentIp = (IPEndPoint)soc.Client.RemoteEndPoint;
+                            //                        bf.Serialize(ns, new Opponent((IPEndPoint)opponent.Client.RemoteEndPoint, type, (IPEndPoint)soc.Client.RemoteEndPoint));
+                            sw.WriteLine(ip.Address + "," + ip.Port + "," + type + "," + currentIp.Address + "," + currentIp.Port);
+                            sw.Flush();
+                            Console.WriteLine("======================");
+                            break;
+                        }
+
                     }
 
                 }
-
+                sr.Close();
+                sw.Close();
+                soc.Close();
             }
-            sr.Close();
-            sw.Close();
-            soc.Close();
+            catch(Exception e)
+            {
+                //clients.TryDequeue(out soc);
+                Console.WriteLine("============================");
+            }
         }
     }
-
 
     class Program
     {
         static void Main(string[] args)
         {
-            runServer(6691);
+            Application.Run(new Form1());
         }
-        static void runServer(int port)
+        public static void runServer(int port)
         {
             //Create Tcp Listener
             //waiting for clients
-            TcpListener server = TcpListener.Create(6691);
+            TcpListener server = TcpListener.Create(port);
             server.Start();
-            Console.WriteLine("The Server is running ......");
+            //Console.WriteLine("The Server is running ......");
 
             while (true)
             {
