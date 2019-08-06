@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GlowHokeyServer
@@ -24,7 +24,11 @@ namespace GlowHokeyServer
             button1.Visible = false;
             label1.Visible = true;
             panel1.Refresh();
-            Program.runServer(Convert.ToInt32(Porttxt.Text));
+
+            TCPThread tcp = new TCPThread(Convert.ToInt32(Porttxt.Text));
+            Thread th = new Thread(tcp.handle);
+            th.Start();
+//            Program.runServer(Convert.ToInt32(Porttxt.Text));
             
         }
     }

@@ -96,13 +96,16 @@ namespace GlowHokeyServer
         }
     }
 
-    class Program
+    class TCPThread
     {
-        static void Main(string[] args)
+        int port;
+
+        public TCPThread(int port)
         {
-            Application.Run(new Form1());
+            this.port = port;
         }
-        public static void runServer(int port)
+
+        public void handle()
         {
             //Create Tcp Listener
             //waiting for clients
@@ -135,6 +138,14 @@ namespace GlowHokeyServer
             }
 
             server.Stop();
+
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Application.Run(new Form1());
         }
     }
 }

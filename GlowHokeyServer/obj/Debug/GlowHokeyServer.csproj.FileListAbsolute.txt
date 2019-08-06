@@ -24,3 +24,14 @@ C:\Users\kerol\Desktop\GlowHockeyServer-master\GlowHokeyServer\obj\Debug\GlowHok
 C:\Users\kerol\Desktop\GlowHockeyServer-master\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CopyComplete
 C:\Users\kerol\Desktop\GlowHockeyServer-master\GlowHokeyServer\obj\Debug\GlowHokeyServer.exe
 C:\Users\kerol\Desktop\GlowHockeyServer-master\GlowHokeyServer\obj\Debug\GlowHokeyServer.pdb
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\GlowHokeyServer.exe
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\GlowHokeyServer.pdb
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\bin\Debug\OpponentLibrary.pdb
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csprojAssemblyReference.cache
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.Form1.resources
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.Properties.Resources.resources
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.GenerateResource.cache
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CoreCompileInputs.cache
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.csproj.CopyComplete
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.exe
+C:\Users\kerol\Desktop\GlowHockeyServer\GlowHokeyServer\obj\Debug\GlowHokeyServer.pdb
